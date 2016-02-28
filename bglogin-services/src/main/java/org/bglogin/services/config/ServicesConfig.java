@@ -15,7 +15,7 @@ import org.springframework.context.annotation.PropertySource;
 @Configuration
 @Import(ModelConfig.class)
 @PropertySource("classpath:db.properties")
-@ComponentScan(basePackages = { "org.bglogin.model" })
+@ComponentScan(basePackages = { "org.bglogin.services" })
 @Profile("production")
 public class ServicesConfig {
 

@@ -7,6 +7,7 @@ CREATE TABLE user (
   password VARCHAR(60) NOT NULL,
   creation_date TIMESTAMP,
   last_login TIMESTAMP,
+  enabled INTEGER NOT NULL,
   PRIMARY KEY (user_id));
 
 

@@ -23,6 +23,7 @@ CREATE TABLE IF NOT EXISTS `bglogin`.`user` (
   `password` VARCHAR(60) NOT NULL,
   `creation_date` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
   `last_login` DATETIME NULL,
+  `enabled` INT(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`user_id`))
 ENGINE = InnoDB;
 

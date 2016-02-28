@@ -3,13 +3,11 @@
 	<parent>
 		<groupId>org.bglogin</groupId>
 		<artifactId>bglogin-parent</artifactId>
-		<version>{project.version}</version>
+		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.bglogin.commons</groupId>
 	<artifactId>bglogin-commons</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
 	<name>bglogin-commons</name>
 	<description>Commons module</description>
 </project>

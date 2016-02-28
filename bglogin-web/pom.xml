@@ -3,22 +3,118 @@
 	<parent>
 		<groupId>org.bglogin</groupId>
 		<artifactId>bglogin-parent</artifactId>
-		<version>{project.version}</version>
+		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.bglogin.web</groupId>
 	<artifactId>bglogin-web</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
 	<name>bglogin-web</name>
 	<description>Web Module</description>
+	<packaging>war</packaging>
 
 	<dependencies>
 		<dependency>
-			<groupId>org.bglogin.services</groupId>
+			<groupId>org.bglogin</groupId>
 			<artifactId>bglogin-services</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+
+		<!-- SPRING -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${springframework.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${springframework.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>${javax.servlet-api.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>jstl</groupId>
+			<artifactId>jstl</artifactId>
+			<version>${jstl.version}</version>
+		</dependency>
+
+		<!-- SPRING SECURITY -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>${spring.security.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>${spring.security.version}</version>
+		</dependency>
 	</dependencies>
+	
+	<profiles>
+		<profile>
+		    <id>dev</id>
+		    <activation>
+				<activeByDefault>true</activeByDefault>
+		    </activation>
+			<properties>
+	            <profile-id>DEV</profile-id>
+	        </properties>		    
+		</profile>
+		<profile>
+		    <id>int</id>
+			<properties>
+	            <profile-id>INT</profile-id>
+	        </properties>		    
+		</profile>
+		<profile>
+		    <id>prod</id>
+			<properties>
+	            <profile-id>PROD</profile-id>
+	        </properties>		    
+		</profile>
+	</profiles>
+
+	<build>
+		<finalName>bglogin</finalName>
+		<resources>
+			<resource>
+                <directory>src/main/resources</directory>
+                <excludes>
+                	<exclude>**/log4j.properties</exclude>
+                	<exclude>**/db.properties</exclude>
+                </excludes>
+                <filtering>true</filtering>
+            </resource>
+		</resources>
+		<plugins>			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					 <webResources>
+	                    <resource>
+	                        <directory>${project.parent.basedir}/resources/${project.activeProfiles[0].id}</directory>
+	                        <targetPath>WEB-INF/classes</targetPath>
+	                        <includes>
+	                            <include>**/*.properties</include>
+	                        </includes>
+	                        <filtering>true</filtering>
+	                    </resource>
+	                </webResources>
+	                <encoding>UTF-8</encoding>
+	                <failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 
 </project>
