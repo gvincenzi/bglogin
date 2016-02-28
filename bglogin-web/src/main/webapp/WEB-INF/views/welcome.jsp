@@ -2,14 +2,16 @@
 <%@page session="true"%>
 <html>
 <body>
-	<h1>Title : ${title}</h1>
-	<h1>Message : ${message}</h1>
+	<h1>${welcomeMessage}</h1>
 
 	<c:if test="${pageContext.request.userPrincipal.name != null}">
 		<h2>
-			Welcome : ${pageContext.request.userPrincipal.name} | 
-			<a href="<c:url value="/logout" />"> Logout</a>
+			Connected username : ${pageContext.request.userPrincipal.name}
 		</h2>
+		<h3>
+			<a href="<c:url value="/logout" />"> Logout</a>
+		</h3>
 	</c:if>
+	
 </body>
 </html>

@@ -38,10 +38,16 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable();
-		http.authorizeRequests().antMatchers("/", "/welcome/**").permitAll().antMatchers("/admin/**")
-				.access("hasRole('ROLE_ADMIN')").and().formLogin().loginPage("/login").defaultSuccessUrl("/welcome")
-				.failureUrl("/login?error").usernameParameter("username").passwordParameter("password").and().logout()
-				.logoutSuccessUrl("/login?logout").invalidateHttpSession(true);
+		http.authorizeRequests()
+		.antMatchers("/", "/welcome/**").access("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
+		.antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
+		.and().formLogin().loginPage("/login").defaultSuccessUrl("/welcome")
+		.failureUrl("/login?error")
+		.usernameParameter("username").passwordParameter("password")
+		.and()
+		.exceptionHandling().accessDeniedPage("/403")
+		.and()
+		.logout().logoutSuccessUrl("/login?logout").invalidateHttpSession(true);
 	}
 	
 	@Bean

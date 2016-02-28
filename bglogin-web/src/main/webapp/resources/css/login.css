@@ -1,0 +1,76 @@
+.error {
+	padding: 15px;
+	margin-bottom: 20px;
+	border: 1px solid transparent;
+	border-radius: 4px;
+	color: #a94442;
+	background-color: #f2dede;
+	border-color: #ebccd1;
+}
+
+.msg {
+	padding: 15px;
+	margin-bottom: 20px;
+	border: 1px solid transparent;
+	border-radius: 4px;
+	color: #31708f;
+	background-color: #d9edf7;
+	border-color: #bce8f1;
+}
+
+#divLogin {
+	width: 400px;
+	padding: 20px;
+	margin: 100px auto;
+	background: #ddd;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border: 1px solid #000;
+}
+
+#divLogin table {
+	width: 100%;
+}
+
+#divLogin h2 {
+	margin: -20px -20px 21px;
+	line-height: 40px;
+	font-size: 15px;
+	font-weight: bold;
+	color: #000;
+	text-align: left;
+	background: #4388CC;
+	border-bottom: 1px solid #000000;
+}
+
+input {
+	font-family: 'Arial', sans-serif;
+	font-size: 12px;
+}
+
+#divLogin input[type=text], input[type=password] {
+	width: 100% !important;
+	margin: 5px;
+	padding: 0 10px;
+	width: 200px;
+	height: 25px;
+	color: #404040;
+	background: white;
+	border: 1px solid;
+	border-color: #4388CC;
+	outline: 1px solid #4388CC; 
+}
+
+#divLogin input[type=submit] {
+	width: 100% !important;
+	padding: 0 18px;
+	height: 50px;
+	font-size: 12px;
+	font-weight: bold;
+	color: #000000;
+	background: #4388CC;
+	border: 1px solid;
+	border-color: #cde5ef;
+	border-radius: 5px;
+	outline: 0; 
+}
