@@ -1,8 +1,17 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@page session="true"%>
 <html>
-<body>
-	<h1>${welcomeMessage}</h1>
+<head>
+	<title><spring:message code="login.page.title"/></title>
+	<spring:url value="/resources/css/login.css" var="loginCss" />
+	<link href="${loginCss}" rel="stylesheet" />
+	
+	<spring:url value="/resources/images/logo.png" var="logo" />
+</head>
+
+<body onload='document.loginForm.username.focus();'>
+	<div id="divLogo"><img alt="Logo" src="${logo}"/> <h4><spring:message code="${welcomeMessage}"/></h4></div>
 
 	<c:if test="${pageContext.request.userPrincipal.name != null}">
 		<h2>

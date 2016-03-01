@@ -1,13 +1,14 @@
-package org.bglogin.commons.enums;
+package org.bglogin.web.enums;
 
 /**
- * Error messages enumeration
+ * Login page message keys enumeration
  * @author Giuseppe Vincenzi
  *
  */
-public enum BGLoginErrorEnum {
-	LOGIN_ERROR("login.error"),
-	LOGIN_PERMISSION_ERROR("login.permission.error");
+public enum LoginMessageKeyEnum {
+	LOGIN_USER_OK("login.user.ok"),
+	LOGIN_ADMIN_OK("login.admin.ok"),
+	LOGIN_LOGOUT_OK("login.logout.ok");
 	
 	/**
 	 * Key message used by Spring MVC
@@ -18,7 +19,7 @@ public enum BGLoginErrorEnum {
 	 * Constructor
 	 * @param key String
 	 */
-	private BGLoginErrorEnum(String key) {
+	private LoginMessageKeyEnum(String key) {
 		this.setKey(key);
 	}
 
@@ -35,5 +36,4 @@ public enum BGLoginErrorEnum {
 	public void setKey(String key) {
 		this.key = key;
 	}
-	
 }

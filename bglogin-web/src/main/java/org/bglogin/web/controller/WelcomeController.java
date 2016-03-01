@@ -2,6 +2,8 @@ package org.bglogin.web.controller;
 
 import java.security.Principal;
 
+import org.bglogin.commons.enums.BGLoginErrorEnum;
+import org.bglogin.web.enums.LoginMessageKeyEnum;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,20 +23,18 @@ public class WelcomeController {
 	public ModelAndView welcomePage() {
 
 		ModelAndView model = new ModelAndView();
-		model.addObject("welcomeMessage", "Welcome in USER area");
+		model.addObject("welcomeMessage", LoginMessageKeyEnum.LOGIN_USER_OK.getKey());
 		model.setViewName("welcome");
 		return model;
-
 	}
 
 	@RequestMapping(value = { "/admin**" }, method = RequestMethod.GET)
 	public ModelAndView adminPage() {
 
 		ModelAndView model = new ModelAndView();
-		model.addObject("welcomeMessage", "Welcome in ADMIN restricted area");
+		model.addObject("welcomeMessage", LoginMessageKeyEnum.LOGIN_ADMIN_OK.getKey());
 		model.setViewName("welcome");
 		return model;
-
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
@@ -43,29 +43,21 @@ public class WelcomeController {
 
 		ModelAndView model = new ModelAndView();
 		if (error != null) {
-			model.addObject("error", "Invalid username and/or password");
+			model.addObject("error", BGLoginErrorEnum.LOGIN_ERROR.getKey());
 		}
 
 		if (logout != null) {
-			model.addObject("msg", "You've been logged out successfully");
+			model.addObject("msg", LoginMessageKeyEnum.LOGIN_LOGOUT_OK.getKey());
 		}
 		model.setViewName("login");
 
 		return model;
-
 	}
 
 	@RequestMapping(value = "/403", method = RequestMethod.GET)
 	public ModelAndView accesssDenied(Principal user) {
-
 		ModelAndView model = new ModelAndView();
-
-		if (user != null) {
-			model.addObject("errorMessage", user.getName() + ", you do not have permissions to access this page!");
-		} else {
-			model.addObject("errorMessage", "You do not have permission to access this page!");
-		}
-
+		model.addObject("errorMessage", BGLoginErrorEnum.LOGIN_PERMISSION_ERROR.getKey());
 		model.setViewName("errors/403");
 		return model;
 
