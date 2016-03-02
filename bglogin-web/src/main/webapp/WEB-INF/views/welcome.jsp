@@ -15,10 +15,10 @@
 
 	<c:if test="${pageContext.request.userPrincipal.name != null}">
 		<h2>
-			Connected username : ${pageContext.request.userPrincipal.name}
+			${pageContext.request.userPrincipal.name}
 		</h2>
 		<h3>
-			<a href="<c:url value="/logout" />"> Logout</a>
+			<a href="<c:url value="/logout" />"> <spring:message code="login.btn.logout"/></a>
 		</h3>
 	</c:if>
 	

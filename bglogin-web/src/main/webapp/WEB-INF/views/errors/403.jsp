@@ -11,11 +11,11 @@
 </head>
 
 <body onload='document.loginForm.username.focus();'>
-	<div id="divLogo"><img alt="Logo" src="${logo}"/> <h4>HTTP Status 403 - Access is denied</h4></div>
+	<div id="divLogo"><img alt="Logo" src="${logo}"/> <h4><spring:message code="error.403.message"/></h4></div>
 	<h2><spring:message code="${errorMessage}"/></h2>
 	<h3>
-		<a href="<c:url value="/welcome" />"> Homepage</a><br/>
-		<a href="<c:url value="/logout" />"> Logout</a>
+		<a href="<c:url value="/welcome" />"> <spring:message code="login.btn.home"/></a><br/>
+		<a href="<c:url value="/logout" />"> <spring:message code="login.btn.logout"/></a>
 	</h3>
 </body>
 </html>
