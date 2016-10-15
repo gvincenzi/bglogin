@@ -15,8 +15,10 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
  *
  */
 @Configuration
-@PropertySource("classpath:db.properties")
-//@PropertySource("classpath:general.properties")
+@PropertySource({
+	"classpath:db.properties",
+	"classpath:general.properties"
+})
 @ComponentScan(basePackages = { "org.bglogin.web", "org.bglogin.services", "org.bglogin.model" })
 public class WebConfig {
 	@Autowired
